@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal de Clientes - ConectaNet</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .portal-header {
+        padding: 1rem 0 0.5rem;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+        margin-bottom: 1.5rem;
+      }
+      .portal-layout {
+        padding: 2rem 0 3rem;
+      }
+      .portal-card {
+        max-width: 780px;
+        margin: 0 auto;
+        background: rgba(15, 23, 42, 0.96);
+        border-radius: 18px;
+        border: 1px solid rgba(148, 163, 184, 0.45);
+        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.85);
+        padding: 1.5rem 1.3rem;
+      }
+      .portal-form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        align-items: flex-end;
+        margin-bottom: 1.2rem;
+      }
+      .portal-form-row .form-field {
+        flex: 1;
+        min-width: 160px;
+        margin-bottom: 0;
+      }
+      .facturas-list {
+        margin-top: 1rem;
+        display: grid;
+        gap: 0.8rem;
+      }
+      .factura-card {
+        border-radius: 14px;
+        border: 1px solid rgba(148, 163, 184, 0.5);
+        padding: 0.9rem 0.9rem;
+        background: radial-gradient(circle at top, #020617, #020617 70%);
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        gap: 0.6rem;
+        align-items: center;
+      }
+      .factura-main {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+      }
+      .factura-monto {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+      .factura-fecha {
+        font-size: 0.86rem;
+        color: #9ca3af;
+      }
+      .factura-id {
+        font-size: 0.8rem;
+        color: #6b7280;
+      }
+      .factura-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        font-size: 0.78rem;
+      }
+      .chip-estado {
+        border-radius: 999px;
+        padding: 0.18rem 0.6rem;
+        border: 1px solid;
+      }
+      .chip-estado-pendiente {
+        border-color: rgba(248, 113, 113, 0.7);
+        background: rgba(248, 113, 113, 0.12);
+        color: #fecaca;
+      }
+      .chip-estado-pagada {
+        border-color: rgba(34, 197, 94, 0.8);
+        background: rgba(34, 197, 94, 0.12);
+        color: #bbf7d0;
+      }
+      .factura-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      .portal-empty {
+        font-size: 0.9rem;
+        color: #9ca3af;
+        margin-top: 0.5rem;
+      }
+      .portal-header-links {
+        font-size: 0.86rem;
+        color: #9ca3af;
+      }
+      .portal-header-links a {
+        color: inherit;
+      }
+      .portal-header-links a:hover {
+        color: #e5e7eb;
+      }
+      @media (max-width: 720px) {
+        .factura-card {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .factura-actions {
+          justify-content: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header portal-header">
+      <div class="container header-content">
+        <div class="logo">
+          <span class="logo-icon">FL</span>
+          <span class="logo-text">FrontLine - Clientes</span>
+        </div>
+        <div class="portal-header-links">
+          <a href="/">← Volver a la página principal</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="portal-layout">
+        <div class="container">
+          <div class="portal-card">
+            <div id="login-box" class="portal-form-row">
+              <div class="form-field">
+                <label for="login-usuario">Usuario</label>
+                <input id="login-usuario" type="text" placeholder="Tu usuario" />
+              </div>
+            
+              <div class="form-field">
+                <label for="login-password">Contraseña</label>
+                <input id="login-password" type="password" placeholder="••••••••" />
+              </div>
+            
+              <button id="btn-login" class="btn btn-primary">
+                Ingresar
+              </button>
+            </div>
+            
+            <div id="login-estado" class="portal-empty"></div>
+            
+            <header class="section-header">
+              <h2>Mis facturas digitales</h2>
+              <p>
+                Consulta el estado de tus facturas de FrontLine en Cartagena y elige el medio de pago que prefieras. Una vez completes el pago, el sistema actualizará el estado de tu factura automáticamente.
+              </p>
+            </header>
+
+            <div id="facturas-area" style="display:none;">
+
+              <div class="portal-form-row">
+                <div class="form-field">
+                  <label for="usuario-id">ID de usuario</label>
+                  <input
+                    id="usuario-id"
+                    type="text"
+                    placeholder="Ej. tu número de contrato o documento"
+                    value="demo"
+                  />
+                </div>
+            
+                <button id="btn-cargar-facturas" class="btn btn-primary">
+                  Ver mis facturas
+                </button>
+              </div>
+            
+              <div id="facturas-estado" class="portal-empty">
+                Ingresa tu ID de usuario y haz clic en "Ver mis facturas".
+              </div>
+            
+              <div id="facturas-list" class="facturas-list"></div>
+            
+            </div>
+            
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <p>© <span id="year"></span> FrontLine. Portal de clientes.</p>
+      </div>
+    </footer>
+
+    <script src="cliente.js"></script>
+  </body>
+  </html>
+

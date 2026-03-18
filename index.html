@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ConectaNet - Internet en Cartagena de Indias</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-content">
+        <div class="logo">
+          <span class="logo-icon">FL</span>
+          <span class="logo-text">FrontLine</span>
+        </div>
+        <nav class="nav">
+          <a href="#planes">Planes</a>
+          <a href="#cobertura">Cobertura</a>
+          <a href="#contacto">Contacto</a>
+          <a href="/cliente">Mi factura</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-content">
+          <div class="hero-text">
+            <h1>Internet de fibra óptica en Cartagena de Indias</h1>
+            <p>
+              Conecta tu hogar o negocio en Cartagena con planes de fibra óptica estables, pensados para teletrabajo, gaming y empresas locales.
+            </p>
+            <div class="hero-actions">
+              <a href="#planes" class="btn btn-primary">Ver planes</a>
+              <a href="#cobertura" class="btn btn-outline">Comprobar cobertura</a>
+            </div>
+          </div>
+          <div class="hero-card">
+            <h2>Atención 24/7</h2>
+            <p>Soporte técnico especializado todos los días del año.</p>
+            <ul>
+              <li>Instalación rápida</li>
+              <li>Router Wi‑Fi incluido</li>
+              <li>Sin sorpresas en la factura</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="planes" class="section">
+        <div class="container">
+          <header class="section-header">
+            <h2>Nuestros planes de internet</h2>
+            <p>Selecciona el tipo de uso para ver los planes recomendados para Cartagena.</p>
+            <div class="chips" id="usage-filters">
+              <button class="chip chip-active" data-usage="todos">Todos</button>
+              <button class="chip" data-usage="hogar">Hogar</button>
+              <button class="chip" data-usage="gaming">Gaming</button>
+              <button class="chip" data-usage="empresa">Empresa</button>
+            </div>
+          </header>
+
+          <div id="planes-grid" class="cards-grid">
+            <!-- Los planes se insertan dinámicamente desde app.js -->
+          </div>
+        </div>
+      </section>
+
+      <section id="cobertura" class="section section-alt">
+        <div class="container cobertura-layout">
+          <div>
+            <header class="section-header">
+              <h2>Consulta la cobertura</h2>
+              <p>
+                Escribe tu barrio o selecciona una zona de Cartagena para saber si ya contamos con servicio.
+              </p>
+            </header>
+
+            <div class="cobertura-form">
+              <label for="ciudad-input">Barrio o sector en Cartagena</label>
+              <div class="cobertura-input-row">
+                <input
+                  type="text"
+                  id="ciudad-input"
+                  placeholder="Ej. Bocagrande, Manga, Crespo..."
+                />
+                <button id="btn-verificar" class="btn btn-primary">
+                  Verificar
+                </button>
+              </div>
+
+              <label for="zona-select">Zonas disponibles</label>
+              <select id="zona-select">
+                <!-- Opciones generadas desde app.js -->
+              </select>
+
+              <p id="cobertura-resultado" class="cobertura-resultado">
+                Ingresa un barrio o selecciona una zona para ver el resultado.
+              </p>
+            </div>
+          </div>
+
+          <div class="cobertura-map">
+            <div class="map-legend">
+              <span class="legend-dot legend-full"></span> Cobertura total
+              <span class="legend-dot legend-partial"></span> Cobertura parcial
+              <span class="legend-dot legend-soon"></span> Próximamente
+            </div>
+            <div class="map-placeholder">
+              <div class="map-region map-full">Zona Norte</div>
+              <div class="map-region map-partial">Zona Centro</div>
+              <div class="map-region map-soon">Zona Sur</div>
+            </div>
+            <p class="map-note">
+              Mapa ilustrativo de Cartagena. Para mayor precisión, consulta con tu dirección exacta en el formulario.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="section">
+        <div class="container contacto-layout">
+          <div>
+            <header class="section-header">
+              <h2>¿Listo para conectarte en Cartagena?</h2>
+              <p>Déjanos tus datos y un asesor local te contactará para validar la cobertura en tu dirección.</p>
+            </header>
+
+            <form class="contact-form">
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="nombre">Nombre completo</label>
+                  <input id="nombre" type="text" required />
+                </div>
+                <div class="form-field">
+                  <label for="telefono">Teléfono</label>
+                  <input id="telefono" type="tel" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="email">Correo electrónico</label>
+                  <input id="email" type="email" required />
+                </div>
+                <div class="form-field">
+                  <label for="direccion">Dirección</label>
+                <input id="direccion" type="text" placeholder="Barrio, calle, número de casa o apartamento" />
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="plan-interes">Plan de interés</label>
+                <select id="plan-interes">
+                  <option value="">Selecciona un plan (opcional)</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">
+                Quiero más información
+              </button>
+            </form>
+          </div>
+          <div class="contact-info">
+            <h3>También puedes contactarnos</h3>
+            <ul>
+              <li><strong>Teléfono:</strong> 01 8000 123 456</li>
+              <li><strong>WhatsApp:</strong> +57 300 000 0000</li>
+              <li><strong>Correo:</strong> soporte@conectanet.com</li>
+              <li><strong>Horario:</strong> Lunes a sábado de 8:00 a 20:00</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <p>© <span id="year"></span> ConectaNet. Todos los derechos reservados.</p>
+        <p class="footer-links">
+          <a href="#">Política de privacidad</a> ·
+          <a href="#">Términos y condiciones</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+  </html>
+
